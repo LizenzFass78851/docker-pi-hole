@@ -47,9 +47,9 @@ ARG BASH_COMMANDS="test ["
 RUN for CMD in ${BASH_COMMANDS}; do \
     ln -s /bin/busybox /usr/local/bin/${CMD} && \
     echo "enable -n ${CMD}" >> /etc/bash/bashrc && \
-    echo "enable -n ${CMD}" >> /etc/bash_noninteractive.sh; \
+    echo "enable -n ${CMD}" >> /etc/bash/noninteractive; \
     done
-ENV BASH_ENV=/etc/bash_noninteractive.sh
+ENV BASH_ENV=/etc/bash/noninteractive
 
 # For nightly images, we install gdb and screen for ease of debugging (this is
 # not included in the default image to keep it small), and also prepare the
